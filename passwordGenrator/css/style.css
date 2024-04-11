@@ -1,0 +1,22 @@
+.heading{
+    color: limegreen;
+    font-size: 60px;
+}
+
+.rowheading{
+    margin-bottom: 10.5rem!important;;
+}
+
+.btn-copy{
+    background-color: limegreen;
+}
+
+.display-text{
+    background-color: lightgray;
+}
+
+.btnGenerate{
+    background-color: limegreen;
+}
+
+

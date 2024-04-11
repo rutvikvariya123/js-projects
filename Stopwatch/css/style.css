@@ -1,0 +1,75 @@
+.main {
+    width: 425px;
+    border: 1px solid gray !important;
+    height: 645px;
+    padding: 5px;
+    margin: 40px 0px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.stopwatch {
+    font-size: 22px;
+    color: #FA1E53;
+    font-weight: 700;
+}
+
+.middle-timer {
+    margin: 150px 0px;
+}
+
+#lap-display {
+    padding: 0px 10px;
+    font-size: 18px;
+    height: 140px;
+    overflow-y: scroll;
+}
+
+#lap-display::-webkit-scrollbar {
+    display: none;
+}
+
+#lap-display::-webkit-scrollbar-track {
+    display: none;
+}
+
+#lap-display::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+#lap-display #currentIndex {
+    color: #FA1E53;
+    padding-right: 80px;
+}
+
+#lap-display .action {
+    position: absolute;
+    bottom: 4px;
+}
+
+#lap-display p{
+    display: flex;
+    justify-content: space-between;    
+}
+.timer {
+    font-size: 50px;
+}
+
+.start_stop {
+    border: none;
+    background-color: #FA1E53;
+    color: white;
+    margin: 3px;
+    border-radius: 6px;
+    width: 200px;
+    padding: 10px 0px;
+}
+
+.rotate180 {
+    transform : rotate(180deg);
+}
+
+.reser_lap {
+    background-color: #F9DFE6 !important;
+    color: #FA1E53 !important;
+}

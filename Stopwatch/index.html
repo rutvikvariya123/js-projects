@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main mx-auto">
+            <div class="top-text">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-center py-2 stopwatch">Stopwatch</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-timer">
+                <div class="row">
+                    <div class="col-7 mx-auto timer text-center" id="displayTime">
+                        <span id="minutes">00</span>:<span id="second">00</span><span id="dots">.</span><span
+                            id="milisecond">00</span>
+                    </div>
+                </div>
+            </div>
+            <div id="lap-display">
+            </div>
+            <div class="action">
+                <div class="d-flex justify-content-between">
+                    <button class="start_stop" id="btnstart">Start</button>
+                    <button class="start_stop" id="btnstop">Stop</button>
+                    <button class="start_stop reser_lap" id="btnlap" disabled>Lap</button>
+                    <button class="start_stop reser_lap" id="btnreset">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script src="./js/index.js"></script>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Genrator</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body onload="generatePass()">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 rowheading">
+                <h1 class="text-center heading">Password Generator</h1>
+            </div>
+            <div class="col-5 m-auto p-4 bg-light">
+                <div class="row">
+                    <div class="col-10 display-text">
+                        <p class="p-2" id="display"></p>
+                    </div>
+                    <div class="col-2 btn-copy">
+                        <button class="btn text-white border-0" id="copy" onclick="copyText()">COPY</button>
+                    </div>
+                </div>
+                <div class="row my-3 d-flex align-items-center justify-content-between">
+                    <div class="col-10">
+                        <form>
+                            <input type="range" id="range" class="w-100" onchange="changeRange()" min="0" max="20"
+                                step="1">
+                        </form>
+                    </div>
+                    <div class="col-2">
+                        <form>
+                            <input type="number" id="btn-show"
+                                class="px-1 py-3 w-75 text-center display-text border-0 rounded-3"></input>
+                        </form>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <div class="d-flex main_wrapper w-100">
+                        <div class="p-3 display-text m-1 w-100 rounded-2">
+                            <form action="">
+                                <input type="checkbox" id="lcheckbox" class="chkchecked" checked
+                                    onclick="generatePass(event)"> a-z
+                            </form>
+                        </div>
+                        <div class="p-3 display-text m-1 w-100 rounded-2">
+                            <form action="">
+                                <input type="checkbox" id="ucheckbox" class="chkchecked" onclick="generatePass(event)">
+                                A-Z
+                            </form>
+                        </div>
+                    </div>
+                    <div class="d-flex main_wrapper w-100">
+                        <div class="p-3 display-text m-1 w-100 rounded-2">
+                            <form action="">
+                                <input type="checkbox" id="ncheckbox" class="chkchecked" onclick="generatePass(event)">
+                                0-9
+                            </form>
+                        </div>
+                        <div class="p-3 display-text m-1 w-100 rounded-2">
+                            <form action="">
+                                <input type="checkbox" id="scheckbox" class="chkchecked" onclick="generatePass(event)">
+                                a-!@#$%^
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" id="generatePass"
+                            class="w-100 my-3 btnGenerate border-0 rounded-2 py-2 text-white"
+                            onclick="generatePass(event)">GENERATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // show range value on button
+    var rangeNumber = parseInt(document.getElementById("range").value);  //number
+    document.getElementById("btn-show").value = rangeNumber;
+
+    // onchange get value
+    function changeRange() {
+        rangeNumber = parseInt(document.getElementById("range").value);
+        document.getElementById("btn-show").value = rangeNumber;
+    }
+
+    // generate password
+    function generatePass(event) {
+        var inputElems = document.getElementsByClassName("chkchecked");
+        count = 0;
+        
+        for (var i = 0; i < inputElems.length; i++) {
+            if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
+                count++;
+            }
+        }
+
+        if (count > 0) {
+            const lowercase = "abcdefghijklmnopqrstuvwxyz";
+            const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const number = "0123456789";
+            const special = "!@#$%^&*()_-+=<>?";
+
+            let selectChar = "";
+
+            if (document.getElementById("lcheckbox").checked) {
+                selectChar += lowercase;
+            }
+
+            if (document.getElementById("ucheckbox").checked) {
+                selectChar += uppercase;
+            }
+
+            if (document.getElementById("ncheckbox").checked) {
+                selectChar += number;
+            }
+
+            if (document.getElementById("scheckbox").checked) {
+                selectChar += special;
+            }
+
+            let pass = '';
+            for (let i = 1; i <= rangeNumber; i++) {
+                let char = Math.floor(Math.random() * selectChar.length);
+                pass += selectChar.charAt(char)
+            }
+            document.getElementById("display").innerText = pass;
+        }
+        else {
+            alert("Please select checkbox");
+        }
+        // copy password
+    }
+    function copyText() {
+        var passwordtxt = document.getElementById("display").innerText;
+        document.getElementById("copy").innerText = "COPIED";
+        navigator.clipboard.writeText(passwordtxt);
+    }
+</script>
+</html>
